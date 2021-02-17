@@ -9,32 +9,36 @@
 </head>
 
 <body ng-controller="indexController">
-	<header>
-		<h1 ng-bind="titulo"></h1>
+	<header class="container">
+		<h2 ng-bind="titulo"></h2>
 	</header>
-
-	<table class="striped">
-		<thead>
-			<tr>
-				<th>Nome</th>
-				<th>E-mail</th>
-				<th>Nota 1</th>
-				<th>Nota 2</th>
-				<th>Nota 3</th>
-				<th>Média</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr ng-repeat="aluno in alunos">
-				<td>{{ aluno.nome }}</td>
-				<td>{{ aluno.email }}</td>
-				<td>{{ aluno.nota1 }}</td>
-				<td>{{ aluno.nota2 }}</td>
-				<td>{{ aluno.nota3 }}</td>
-				<td>{{ media(aluno) }}</td>
-			</tr>
-		</tbody>
-	</table>
+	<main class="container">
+		<div class="row">
+			<input type="text" ng-model="busca.nome" placeholder="Busca">
+		</div>
+		<table class="striped">
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>E-mail</th>
+					<th>Nota 1</th>
+					<th>Nota 2</th>
+					<th>Nota 3</th>
+					<th>Média</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="aluno in alunos | filter:busca">
+					<td>{{ aluno.nome }}</td>
+					<td>{{ aluno.email }}</td>
+					<td>{{ aluno.nota1 }}</td>
+					<td>{{ aluno.nota2 }}</td>
+					<td>{{ aluno.nota3 }}</td>
+					<td>{{ media(aluno) }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</main>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 	<script src="lib/angular/angular.min.js"></script>
