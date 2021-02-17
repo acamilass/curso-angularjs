@@ -34,7 +34,7 @@
 					<td>{{ aluno.nota1 }}</td>
 					<td>{{ aluno.nota2 }}</td>
 					<td>{{ aluno.nota3 }}</td>
-					<td>{{ media(aluno) }}</td>
+					<td>{{ aluno.media }}</td>
 				</tr>
 			</tbody>
 		</table>
@@ -53,10 +53,23 @@
 					{ nome: 'Carol', email: 'carol@mail.com', nota1: 95, nota2: 30, nota3: 55 }
 				];
 
-				$scope.media = function(aluno) {
+				var init = function() {
+					$scope.alunos.forEach(function(aluno) {
+						aluno.media = media(aluno);
+					});
+				}
+
+				var media = function(aluno) {
 					const media = (aluno.nota1 + aluno.nota2 + aluno.nota3) / 3;
 					return media.toFixed(1);
 				};
+
+				// $scope.media = function(aluno) {
+				// 	const media = (aluno.nota1 + aluno.nota2 + aluno.nota3) / 3;
+				// 	return media.toFixed(1);
+				// };
+
+				init();
 			});
 	</script>
 </body>
