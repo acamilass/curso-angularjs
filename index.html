@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app='meuModulo'>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Curso AngularJS</title>
+</head>
+
+<body ng-controller='indexController'>
+	<header>
+		<h1>{{ titulo }}</h1>
+	</header>
+	<script src="lib/angular/angular.min.js"></script>
+	<script>
+		angular.module('meuModulo', [])
+			.controller('indexController', function($scope) {
+				$scope.titulo = 'Sistema com AngularJS';
+			}) 
+	</script>
+</body>
+
+</html>
