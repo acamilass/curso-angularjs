@@ -1,21 +1,50 @@
 <!DOCTYPE html>
-<html ng-app='meuModulo'>
+<html ng-app="meuModulo">
 
 <head>
 	<meta charset="UTF-8">
 	<title>Curso AngularJS</title>
 </head>
 
-<body ng-controller='indexController'>
+<body ng-controller="indexController">
 	<header>
-		<h1>{{ titulo }}</h1>
+		<h1 ng-bind="titulo"></h1>
 	</header>
+
+	<table>
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th>E-mail</th>
+				<th>Nota 1</th>
+				<th>Nota 2</th>
+				<th>Nota 3</th>
+				<th>Média</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="aluno in alunos">
+				<td>{{ aluno.nome }}</td>
+				<td>{{ aluno.email }}</td>
+				<td>{{ aluno.nota1 }}</td>
+				<td>{{ aluno.nota2 }}</td>
+				<td>{{ aluno.nota3 }}</td>
+			</tr>
+		</tbody>
+	</table>
+
 	<script src="lib/angular/angular.min.js"></script>
 	<script>
 		angular.module('meuModulo', [])
 			.controller('indexController', function($scope) {
 				$scope.titulo = 'Sistema com AngularJS';
-			}) 
+				$scope.alunos = [
+					{ nome: 'Camila', email: 'camila@mail.com', nota1: 65, nota2: 80, nota3: 55 },
+					{ nome: 'Cristina', email: 'cristina@mail.com', nota1: 75, nota2: 80, nota3: 55 },
+					{ nome: 'Clara', email: 'clara@mail.com', nota1: 65, nota2: 60, nota3: 55 },
+					{ nome: 'Carol', email: 'carol@mail.com', nota1: 95, nota2: 30, nota3: 55 }
+				];
+			});
 	</script>
 </body>
 
